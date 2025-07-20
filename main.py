@@ -111,11 +111,55 @@ def code_to_symbol(code):
 
     return formats
 
+# Print dictionaries
+def print_dictionaries():
+    clear_console()
+    choice = input("Available dictionaries:\n1. ASCII\n2. CP437\n3. CP850\n4. CP1252\n> ")
+
+    if choice == '1':
+        print("ASCII Dictionary")
+        print("┌────────┬────────┐")
+        print("│ Symbol │ Code   │")
+        print("├────────┼────────┤")
+        for symbol, code in ascii_symbols.items():
+            print(f"│ {symbol:<6} │ {str(code):<6} │")
+        print("└────────┴────────┘")
+    elif choice == '2':
+        print("CP437 Dictionary")
+        print("┌────────┬────────┐")
+        print("│ Symbol │ Code   │")
+        print("├────────┼────────┤")
+        for symbol, code in cp437_symbol_to_code.items():
+            print(f"│ {symbol:<6} │ {str(code):<6} │")
+        print("└────────┴────────┘")
+    elif choice == '3':
+        print("CP850 Dictionary")
+        print("┌────────┬────────┐")
+        print("│ Symbol │ Code   │")
+        print("├────────┼────────┤")
+        for symbol, code in cp850_symbol_to_code.items():
+            print(f"│ {symbol:<6} │ {str(code):<6} │")
+        print("└────────┴────────┘")
+    elif choice == '4':
+        print("CP1252 Dictionary")
+        print("┌────────┬────────┐")
+        print("│ Symbol │ Code   │")
+        print("├────────┼────────┤")
+        for symbol, code in cp1252_symbol_to_code.items():
+            print(f"│ {symbol:<6} │ {str(code):<6} │")
+        print("└────────┴────────┘")
+    else:
+        print("Invalid choice, returning to main menu.")
+        return
+    
+    input("Press Enter to return to the main menu...")
+    clear_console()
+
 def main():
     clear_console()
     while True:
-        choice = input("Choose an option:\n1. Symbol to Code\n2. Code to Symbol\n3. Exit\n> ")
-        
+        choice = input("Choose an option:\n1. Symbol to Code\n2. Code to Symbol\n3. Print Dictionaries\n4. Exit\n> ")
+
         if choice == '1':
             symbol = input("Enter the symbol: ")
             symbol_to_code(symbol)
@@ -123,6 +167,8 @@ def main():
             code = input("Enter the code: ")
             code_to_symbol(code)
         elif choice == '3':
+            print_dictionaries()
+        elif choice == '4':
             clear_console()
             print("Bye ☺")
             break
